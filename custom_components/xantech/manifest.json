@@ -1,12 +1,12 @@
 {
     "domain": "xantech",
-    "name": "Xantech Multi-Zone Audio",
-    "version": "0.3.2",
-    "documentation": "https://github.com/rsnodgrass/hass-xantech",
-    "issue_tracker": "https://github.com/rsnodgrass/hass-xantech/issues",
+    "name": "NERO MAX12 Multi-Zone Audio",
+    "version": "0.3.2-nero.1",
+    "documentation": "https://github.com/aniceberg/hass-nero-max12",
+    "issue_tracker": "https://github.com/aniceberg/hass-nero-max12/issues",
     "requirements": ["pyxantech>=0.10.7"],
     "homeassistant": "2025.2.0",
-    "codeowners": ["@rsnodgrass"],
+    "codeowners": ["@aniceberg"],
     "config_flow": true,
     "iot_class": "local_polling",
     "integration_type": "hub"

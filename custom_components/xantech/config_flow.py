@@ -24,10 +24,10 @@ from homeassistant.helpers.selector import (
     TextSelectorConfig,
     TextSelectorType,
 )
-from pyxantech import async_get_amp_controller, get_device_config
 from serial import SerialException
 import voluptuous as vol
 
+from .amp_adapter import async_get_amp_controller, get_device_config
 from .const import (
     CONF_AMP_TYPE,
     CONF_ENABLE_AUDIO_CONTROLS,
@@ -255,7 +255,7 @@ class XantechConfigFlow(ConfigFlow, domain=DOMAIN):
 
     def _get_default_zones_text(self, amp_type: str) -> str:
         """Get default zones text for an amplifier type."""
-        if amp_type == 'monoprice6':
+        if amp_type in ('monoprice6', 'osd_nero_max12'):
             return (
                 '11: Living Room\n12: Kitchen\n13: Master Bedroom\n'
                 '14: Office\n15: Patio\n16: Dining Room'

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-from typing import TYPE_CHECKING
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ENTITY_ID
@@ -11,9 +10,9 @@ from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.typing import ConfigType
-from pyxantech import async_get_amp_controller
 from serial import SerialException
 
+from .amp_adapter import AmpControlBase, async_get_amp_controller
 from .const import (
     CONF_AMP_TYPE,
     CONF_ENABLE_AUDIO_CONTROLS,
@@ -28,9 +27,6 @@ from .const import (
     SERVICE_SNAPSHOT,
 )
 from .coordinator import XantechCoordinator
-
-if TYPE_CHECKING:
-    from pyxantech import AmpControlBase
 
 LOG = logging.getLogger(__name__)
 

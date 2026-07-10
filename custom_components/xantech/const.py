@@ -35,6 +35,8 @@ AMP_TYPE_DAX88: Final = 'dax88'
 AMP_TYPE_ZPR68: Final = 'zpr68-10'
 # sonance6: Sonance C4630 SE (6-zone), 875D MKII (4-zone)
 AMP_TYPE_SONANCE6: Final = 'sonance6'
+# osd_nero_max12: OSD Audio NERO MAX12 via its HLK-RM04 TCP serial bridge
+AMP_TYPE_OSD_NERO_MAX12: Final = 'osd_nero_max12'
 
 # Sonance6 volume range: below 40 is inaudibly quiet, physical max is 60
 SONANCE6_MIN_VOLUME: Final = 40
@@ -54,6 +56,7 @@ SUPPORTED_AMP_TYPES: Final[list[str]] = [
     AMP_TYPE_DAX88,
     AMP_TYPE_ZPR68,
     AMP_TYPE_SONANCE6,
+    AMP_TYPE_OSD_NERO_MAX12,
 ]
 
 # Max volume level for amps

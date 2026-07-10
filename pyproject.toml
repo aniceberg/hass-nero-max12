@@ -1,7 +1,7 @@
 [project]
-name = "hass-xantech"
+name = "hass-nero-max12"
 version = "1.0.0"
-description = "Home Assistant integration for Xantech Multi-Zone Audio amplifiers"
+description = "Home Assistant integration for OSD NERO MAX12 and Xantech-like multi-zone audio amplifiers"
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.13"

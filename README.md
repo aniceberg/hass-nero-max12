@@ -1,4 +1,30 @@
-# Xantech/Dayton Audio/Sonance Multi-Zone Amp Control for Home Assistant
+# NERO MAX12 Multi-Zone Audio for Home Assistant
+
+This fork adds first-class support for the **OSD Audio NERO MAX12** when it is
+controlled through the built-in HLK-RM04 TCP serial bridge, such as
+`socket://192.168.0.49:8080`.
+
+The NERO bridge looks similar to Monoprice/Dayton/Xantech RS-232 hardware, but
+the live unit tested for this fork requires CRLF command framing and echoes
+commands before returning status. Select the `osd_nero_max12` amplifier type for
+that behavior.
+
+The original upstream integration is
+[rsnodgrass/hass-xantech](https://github.com/rsnodgrass/hass-xantech).
+
+## HACS Installation
+
+1. In HACS, add `https://github.com/aniceberg/hass-nero-max12` as a custom
+   repository with category `Integration`.
+2. Install **NERO MAX12 Multi-Zone Audio**.
+3. Restart Home Assistant.
+4. Add the integration and select **OSD Audio NERO MAX12** as the amplifier
+   type.
+5. Use the NERO bridge socket URL, for example:
+
+```text
+socket://192.168.0.49:8080
+```
 
 ![beta_badge](https://img.shields.io/badge/maturity-Beta-yellow.png)
 ![release_badge](https://img.shields.io/github/v/release/rsnodgrass/hass-xantech.svg)

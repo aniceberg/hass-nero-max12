@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "title": "Connect to Amplifier",
-                "description": "Configure connection to your Xantech, Dayton Audio, or Monoprice multi-zone amplifier. [☕ Tip the Author](https://buymeacoffee.com/DYks67r)",
+                "description": "Configure connection to your OSD NERO MAX12, Xantech, Dayton Audio, or Monoprice multi-zone amplifier.",
                 "data": {
                     "port": "Serial Port",
                     "amp_type": "Amplifier Type"
@@ -103,6 +103,7 @@
             "options": {
                 "xantech8": "Xantech 8-Zone (MRC88, MX88, MRAUDIO8X8)",
                 "monoprice6": "Monoprice/Dayton 6-Zone (MPR-SG6Z, DAX66, WS66i)",
+                "osd_nero_max12": "OSD Audio NERO MAX12",
                 "dax88": "Dayton Audio DAX88 (6+2 Zone)",
                 "zpr68-10": "Xantech ZPR68-10",
                 "sonance6": "Sonance (C4630 SE, 875D MKII)"
