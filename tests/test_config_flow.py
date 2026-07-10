@@ -9,7 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
 from serial import SerialException
 
-from custom_components.xantech.const import (
+from custom_components.nero_max_12.const import (
     CONF_AMP_TYPE,
     CONF_PORT,
     DOMAIN,
@@ -32,7 +32,7 @@ async def test_user_form_connection_error(
 ) -> None:
     """Test handling of connection error during config flow."""
     with patch(
-        'custom_components.xantech.config_flow.async_get_amp_controller',
+        'custom_components.nero_max_12.config_flow.async_get_amp_controller',
         side_effect=SerialException('Connection failed'),
     ):
         result = await hass.config_entries.flow.async_init(
@@ -56,7 +56,7 @@ async def test_user_form_unknown_error(
 ) -> None:
     """Test handling of unknown error during config flow."""
     with patch(
-        'custom_components.xantech.config_flow.async_get_amp_controller',
+        'custom_components.nero_max_12.config_flow.async_get_amp_controller',
         side_effect=Exception('Unknown error'),
     ):
         result = await hass.config_entries.flow.async_init(
@@ -120,7 +120,7 @@ async def test_full_flow_success(
 
     # final: entry created
     assert result['type'] == FlowResultType.CREATE_ENTRY
-    assert result['title'] == 'Xantech Multi-Zone Audio (/dev/ttyUSB0)'
+    assert result['title'] == 'Nero MAX 12 (/dev/ttyUSB0)'
     assert result['data'][CONF_PORT] == '/dev/ttyUSB0'
     assert result['data'][CONF_AMP_TYPE] == 'xantech8'
 
@@ -206,7 +206,7 @@ def test_options_flow_stores_config_entry_correctly() -> None:
     """
     from unittest.mock import MagicMock
 
-    from custom_components.xantech.config_flow import XantechOptionsFlow
+    from custom_components.nero_max_12.config_flow import XantechOptionsFlow
 
     mock_entry = MagicMock()
     mock_entry.data = {'port': '/dev/ttyUSB0', 'amp_type': 'xantech8'}
@@ -227,7 +227,7 @@ def test_xantech8_default_zones_use_double_digit() -> None:
     Most xantech8 models (MRC88, MX88) use two-digit addressing (11-18).
     Standalone MRAUDIO8x8 also accepts 1-8, but defaults target the common case.
     """
-    from custom_components.xantech.config_flow import XantechConfigFlow
+    from custom_components.nero_max_12.config_flow import XantechConfigFlow
 
     flow = XantechConfigFlow()
     defaults = flow._get_default_zones_text('xantech8')
@@ -239,7 +239,7 @@ def test_xantech8_default_zones_use_double_digit() -> None:
 
 def test_monoprice6_default_zones_use_double_digit() -> None:
     """Test that monoprice6 config flow defaults use double-digit zone IDs."""
-    from custom_components.xantech.config_flow import XantechConfigFlow
+    from custom_components.nero_max_12.config_flow import XantechConfigFlow
 
     flow = XantechConfigFlow()
     defaults = flow._get_default_zones_text('monoprice6')
@@ -251,7 +251,7 @@ def test_monoprice6_default_zones_use_double_digit() -> None:
 
 def test_dax88_default_zones_use_double_digit() -> None:
     """Test that dax88 config flow defaults use double-digit zone IDs."""
-    from custom_components.xantech.config_flow import XantechConfigFlow
+    from custom_components.nero_max_12.config_flow import XantechConfigFlow
 
     flow = XantechConfigFlow()
     defaults = flow._get_default_zones_text('dax88')

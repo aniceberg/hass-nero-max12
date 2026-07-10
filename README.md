@@ -1,10 +1,10 @@
-# NERO MAX12 Multi-Zone Audio for Home Assistant
+# Nero MAX 12 for Home Assistant
 
-This fork adds first-class support for the **OSD Audio NERO MAX12** when it is
+This fork adds first-class support for the **OSD Audio Nero MAX 12** when it is
 controlled through the built-in HLK-RM04 TCP serial bridge, such as
 `socket://192.168.0.49:8080`.
 
-The NERO bridge looks similar to Monoprice/Dayton/Xantech RS-232 hardware, but
+The Nero bridge looks similar to Monoprice/Dayton/Xantech RS-232 hardware, but
 the live unit tested for this fork requires CRLF command framing and echoes
 commands before returning status. Select the `osd_nero_max12` amplifier type for
 that behavior.
@@ -16,19 +16,19 @@ The original upstream integration is
 
 1. In HACS, add `https://github.com/aniceberg/hass-nero-max12` as a custom
    repository with category `Integration`.
-2. Install **NERO MAX12 Multi-Zone Audio**.
+2. Install **Nero MAX 12**.
 3. Restart Home Assistant.
-4. Add the integration and select **OSD Audio NERO MAX12** as the amplifier
+4. Add the integration and select **OSD Audio Nero MAX 12** as the amplifier
    type.
-5. Use the NERO bridge socket URL, for example:
+5. Use the Nero bridge socket URL, for example:
 
 ```text
 socket://192.168.0.49:8080
 ```
 
 ![beta_badge](https://img.shields.io/badge/maturity-Beta-yellow.png)
-![release_badge](https://img.shields.io/github/v/release/rsnodgrass/hass-xantech.svg)
-![release_date](https://img.shields.io/github/release-date/rsnodgrass/hass-xantech.svg)
+![release_badge](https://img.shields.io/github/v/release/aniceberg/hass-nero-max12.svg)
+![release_date](https://img.shields.io/github/release-date/aniceberg/hass-nero-max12.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 
@@ -72,7 +72,7 @@ If you have trouble with installation and configuration, visit the [Xantech / Da
 
 ### Step 1: Install Custom Components
 
-Make sure that [Home Assistant Community Store (HACS)](https://github.com/custom-components/hacs) is installed and then add the "Integration" repository: `rsnodgrass/hass-xantech`.
+Make sure that [Home Assistant Community Store (HACS)](https://github.com/custom-components/hacs) is installed and then add the "Integration" repository: `aniceberg/hass-nero-max12`.
 
 ### Step 2: Configuration
 
@@ -80,8 +80,8 @@ Make sure that [Home Assistant Community Store (HACS)](https://github.com/custom
 
 ```yaml
 media_player:
-  - platform: xantech
-    type: xantech8
+  - platform: nero_max_12
+    type: osd_nero_max12
     port: /dev/ttyUSB0
     zones:
       11:
@@ -106,9 +106,9 @@ port setting. **This has not been tested.**
 
 ```yaml
 media_player:
-  - platform: xantech
-    type: xantech8
-    port: socket://192.168.1.10:888/
+  - platform: nero_max_12
+    type: osd_nero_max12
+    port: socket://192.168.0.49:8080
 ```
 
 #### Lovelace

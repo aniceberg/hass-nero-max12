@@ -1,4 +1,4 @@
-"""Amplifier adapter layer for upstream pyxantech plus OSD NERO MAX12."""
+"""Amplifier adapter layer for upstream pyxantech plus OSD Nero MAX 12."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ AMP_TYPE_OSD_NERO_MAX12 = 'osd_nero_max12'
 
 _NERO_CONFIG: dict[str, Any] = {
     'series': AMP_TYPE_OSD_NERO_MAX12,
-    'name': 'OSD Audio NERO MAX12',
+    'name': 'OSD Audio Nero MAX 12',
     'supports_bass': True,
     'supports_treble': True,
     'supports_balance': True,
@@ -93,10 +93,10 @@ class _NeroZoneStatus:
 
     @classmethod
     def from_response(cls, response: str) -> _NeroZoneStatus | None:
-        """Parse a NERO status response, ignoring echoed commands and prompts."""
+        """Parse a Nero status response, ignoring echoed commands and prompts."""
         match = _STATUS_RE.search(response)
         if not match:
-            LOG.debug('Could not parse NERO status response: %r', response)
+            LOG.debug('Could not parse Nero status response: %r', response)
             return None
 
         values = match.groupdict()
@@ -140,11 +140,11 @@ def get_device_config(
     *,
     log_missing: bool = True,
 ) -> Any:
-    """Return device configuration for NERO or upstream pyxantech amp types."""
+    """Return device configuration for Nero or upstream pyxantech amp types."""
     if amp_type == AMP_TYPE_OSD_NERO_MAX12:
         value = _NERO_CONFIG.get(key)
         if value is None and log_missing:
-            LOG.warning('No NERO config for key: %s', key)
+            LOG.warning('No Nero config for key: %s', key)
         return value
 
     return pyxantech_get_device_config(amp_type, key, log_missing=log_missing)
@@ -171,7 +171,7 @@ async def async_get_amp_controller(
 
 
 class NeroMax12Controller(AmpControlBase):
-    """Async controller for the OSD NERO MAX12 via its HLK-RM04 TCP bridge."""
+    """Async controller for the OSD Nero MAX 12 via its HLK-RM04 TCP bridge."""
 
     def __init__(
         self,
@@ -196,7 +196,7 @@ class NeroMax12Controller(AmpControlBase):
 
     def _require_port(self) -> serial.SerialBase:
         if self._port is None:
-            raise serial.SerialException('NERO MAX12 port is not open')
+            raise serial.SerialException('Nero MAX 12 port is not open')
         return self._port
 
     async def _send(self, command: str, *, expect_status: bool = False) -> str:
@@ -211,7 +211,7 @@ class NeroMax12Controller(AmpControlBase):
 
         port.reset_input_buffer()
         port.reset_output_buffer()
-        LOG.debug('Sending NERO command: %r', request)
+        LOG.debug('Sending Nero command: %r', request)
         port.write(request)
         port.flush()
 
@@ -235,12 +235,12 @@ class NeroMax12Controller(AmpControlBase):
         response = bytes(chunks).decode('ascii', errors='ignore')
         LOG.debug('Received NERO response: %r', response)
         if 'Command Error' in response:
-            raise serial.SerialException(f'NERO command failed: {command}')
+            raise serial.SerialException(f'Nero command failed: {command}')
         return response
 
     def _validate_zone(self, zone: int) -> None:
         if zone not in _NERO_CONFIG['zones']:
-            raise ValueError(f'Invalid NERO MAX12 zone: {zone}')
+            raise ValueError(f'Invalid Nero MAX 12 zone: {zone}')
 
     @staticmethod
     def _clamp(value: int, minimum: int, maximum: int) -> int:
@@ -291,7 +291,7 @@ class NeroMax12Controller(AmpControlBase):
         """Set zone input source."""
         self._validate_zone(zone)
         if source not in _NERO_CONFIG['sources']:
-            raise ValueError(f'Invalid NERO MAX12 source: {source}')
+            raise ValueError(f'Invalid Nero MAX 12 source: {source}')
         await self._send(f'<{zone}CH{source:02}')
 
     async def all_off(self) -> None:

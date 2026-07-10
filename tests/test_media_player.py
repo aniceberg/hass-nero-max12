@@ -8,9 +8,9 @@ from homeassistant.components.media_player import MediaPlayerState
 from homeassistant.core import HomeAssistant
 import pytest
 
-from custom_components.xantech.const import MAX_VOLUME
-from custom_components.xantech.coordinator import XantechCoordinator
-from custom_components.xantech.media_player import ZoneMediaPlayer
+from custom_components.nero_max_12.const import MAX_VOLUME
+from custom_components.nero_max_12.coordinator import XantechCoordinator
+from custom_components.nero_max_12.media_player import ZoneMediaPlayer
 
 
 @pytest.fixture
@@ -107,7 +107,7 @@ async def test_zone_player_source_list(zone_player: ZoneMediaPlayer) -> None:
 
 async def test_zone_player_unique_id(zone_player: ZoneMediaPlayer) -> None:
     """Test zone player unique ID format."""
-    assert zone_player.unique_id == 'xantech_test_amp_zone_11'
+    assert zone_player.unique_id == 'nero_max_12_test_amp_zone_11'
 
 
 async def test_zone_player_icon_on(zone_player: ZoneMediaPlayer) -> None:

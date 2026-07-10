@@ -9,7 +9,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 from homeassistant.core import HomeAssistant
 import pytest
 
-from custom_components.xantech.const import (
+from custom_components.nero_max_12.const import (
     CONF_AMP_TYPE,
     CONF_PORT,
     CONF_SOURCES,
@@ -44,7 +44,7 @@ def mock_async_get_amp_controller(
 ) -> Generator[AsyncMock]:
     """Mock the async_get_amp_controller function."""
     with patch(
-        'custom_components.xantech.config_flow.async_get_amp_controller',
+        'custom_components.nero_max_12.config_flow.async_get_amp_controller',
         new_callable=AsyncMock,
     ) as mock_get:
         mock_get.return_value = mock_amp
@@ -55,7 +55,7 @@ def mock_async_get_amp_controller(
 def mock_setup_entry() -> Generator[AsyncMock]:
     """Mock setting up a config entry."""
     with patch(
-        'custom_components.xantech.async_setup_entry',
+        'custom_components.nero_max_12.async_setup_entry',
         return_value=True,
     ) as mock_setup:
         yield mock_setup
@@ -90,7 +90,7 @@ def config_entry(
 
     entry = MockConfigEntry(
         domain=DOMAIN,
-        title='Xantech Multi-Zone Audio (/dev/ttyUSB0)',
+        title='Nero MAX 12 (/dev/ttyUSB0)',
         data=config_entry_data,
         options={},
         unique_id=f'{DOMAIN}_/dev/ttyUSB0',

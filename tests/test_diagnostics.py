@@ -8,11 +8,11 @@ from unittest.mock import MagicMock
 from homeassistant.core import HomeAssistant
 import pytest
 
-from custom_components.xantech.const import (
+from custom_components.nero_max_12.const import (
     DOMAIN,
 )
-from custom_components.xantech.coordinator import XantechCoordinator
-from custom_components.xantech.diagnostics import (
+from custom_components.nero_max_12.coordinator import XantechCoordinator
+from custom_components.nero_max_12.diagnostics import (
     _redact_port,
     async_get_config_entry_diagnostics,
 )
@@ -50,7 +50,7 @@ def mock_entry_for_diagnostics(
     entry.entry_id = 'test_entry_id'
     entry.version = 1
     entry.domain = DOMAIN
-    entry.title = 'Xantech Multi-Zone Audio (/dev/ttyUSB0)'
+    entry.title = 'Nero MAX 12 (/dev/ttyUSB0)'
     entry.data = config_entry_data
     entry.options = {'scan_interval': 30}
     entry.runtime_data = mock_runtime_data

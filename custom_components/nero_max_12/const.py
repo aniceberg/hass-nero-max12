@@ -1,10 +1,10 @@
-"""Constants for the Xantech Multi-Zone Amplifier integration."""
+"""Constants for the Nero MAX 12 integration."""
 
 from __future__ import annotations
 
 from typing import Final
 
-DOMAIN: Final = 'xantech'
+DOMAIN: Final = 'nero_max_12'
 
 # Configuration keys
 CONF_PORT: Final = 'port'
@@ -20,8 +20,8 @@ CONF_SCAN_INTERVAL: Final = 'scan_interval'
 CONF_ENABLE_AUDIO_CONTROLS: Final = 'enable_audio_controls'
 
 # Defaults
-DEFAULT_NAME: Final = 'Xantech Multi-Zone Audio'
-DEFAULT_AMP_TYPE: Final = 'xantech8'
+DEFAULT_NAME: Final = 'Nero MAX 12'
+DEFAULT_AMP_TYPE: Final = 'osd_nero_max12'
 DEFAULT_SCAN_INTERVAL: Final = 30
 
 # Amplifier types supported by pyxantech
@@ -35,7 +35,7 @@ AMP_TYPE_DAX88: Final = 'dax88'
 AMP_TYPE_ZPR68: Final = 'zpr68-10'
 # sonance6: Sonance C4630 SE (6-zone), 875D MKII (4-zone)
 AMP_TYPE_SONANCE6: Final = 'sonance6'
-# osd_nero_max12: OSD Audio NERO MAX12 via its HLK-RM04 TCP serial bridge
+# osd_nero_max12: OSD Audio Nero MAX 12 via its HLK-RM04 TCP serial bridge
 AMP_TYPE_OSD_NERO_MAX12: Final = 'osd_nero_max12'
 
 # Sonance6 volume range: below 40 is inaudibly quiet, physical max is 60

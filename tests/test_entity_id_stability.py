@@ -7,7 +7,7 @@ migration path if changes are absolutely necessary.
 
 import pytest
 
-DOMAIN = 'xantech'
+DOMAIN = 'nero_max_12'
 
 # Golden unique_id format documentation
 # These patterns are part of the public API - do not change without migration
@@ -21,13 +21,13 @@ GOLDEN_FORMATS = {
 
 def generate_media_player_unique_id(amp_name: str, zone_id: int) -> str:
     """Generate unique_id using same logic as ZoneMediaPlayer.__init__."""
-    # mirrors: custom_components/xantech/media_player.py line 108-110
+    # mirrors: custom_components/nero_max_12/media_player.py line 108-110
     return f'{DOMAIN}_{amp_name}_zone_{zone_id}'.lower().replace(' ', '_')
 
 
 def generate_number_unique_id(amp_name: str, zone_id: int, control_key: str) -> str:
     """Generate unique_id using same logic as ZoneAudioControlNumber.__init__."""
-    # mirrors: custom_components/xantech/number.py line 143-146
+    # mirrors: custom_components/nero_max_12/number.py line 143-146
     return (
         f'{DOMAIN}_{amp_name}_zone_{zone_id}_{control_key}'.lower().replace(' ', '_')
     )
@@ -39,10 +39,10 @@ class TestMediaPlayerUniqueIdStability:
     @pytest.mark.parametrize(
         'amp_name,zone_id,expected',
         [
-            ('My Amp', 11, 'xantech_my_amp_zone_11'),
-            ('DAX88', 11, 'xantech_dax88_zone_11'),
-            ('Living Room Amp', 12, 'xantech_living_room_amp_zone_12'),
-            ('monoprice6', 15, 'xantech_monoprice6_zone_15'),
+            ('My Amp', 11, 'nero_max_12_my_amp_zone_11'),
+            ('DAX88', 11, 'nero_max_12_dax88_zone_11'),
+            ('Living Room Amp', 12, 'nero_max_12_living_room_amp_zone_12'),
+            ('monoprice6', 15, 'nero_max_12_monoprice6_zone_15'),
         ],
     )
     def test_format_stability(self, amp_name: str, zone_id: int, expected: str):
@@ -62,16 +62,25 @@ class TestMediaPlayerUniqueIdStability:
 
     def test_special_characters_normalized(self):
         """Verify spaces are converted to underscores consistently."""
-        assert generate_media_player_unique_id('My Amp', 11) == 'xantech_my_amp_zone_11'
+        assert (
+            generate_media_player_unique_id('My Amp', 11)
+            == 'nero_max_12_my_amp_zone_11'
+        )
         assert (
             generate_media_player_unique_id('Multi Word Amp Name', 13)
-            == 'xantech_multi_word_amp_name_zone_13'
+            == 'nero_max_12_multi_word_amp_name_zone_13'
         )
 
     def test_case_normalized_to_lowercase(self):
         """Verify mixed case is normalized to lowercase."""
-        assert generate_media_player_unique_id('MyAMP', 11) == 'xantech_myamp_zone_11'
-        assert generate_media_player_unique_id('DAX-88', 11) == 'xantech_dax-88_zone_11'
+        assert (
+            generate_media_player_unique_id('MyAMP', 11)
+            == 'nero_max_12_myamp_zone_11'
+        )
+        assert (
+            generate_media_player_unique_id('DAX-88', 11)
+            == 'nero_max_12_dax-88_zone_11'
+        )
 
 
 class TestNumberEntityUniqueIdStability:
@@ -80,11 +89,11 @@ class TestNumberEntityUniqueIdStability:
     @pytest.mark.parametrize(
         'amp_name,zone_id,control_key,expected',
         [
-            ('My Amp', 11, 'bass', 'xantech_my_amp_zone_11_bass'),
-            ('My Amp', 11, 'treble', 'xantech_my_amp_zone_11_treble'),
-            ('My Amp', 11, 'balance', 'xantech_my_amp_zone_11_balance'),
-            ('DAX88', 12, 'bass', 'xantech_dax88_zone_12_bass'),
-            ('Living Room', 15, 'treble', 'xantech_living_room_zone_15_treble'),
+            ('My Amp', 11, 'bass', 'nero_max_12_my_amp_zone_11_bass'),
+            ('My Amp', 11, 'treble', 'nero_max_12_my_amp_zone_11_treble'),
+            ('My Amp', 11, 'balance', 'nero_max_12_my_amp_zone_11_balance'),
+            ('DAX88', 12, 'bass', 'nero_max_12_dax88_zone_12_bass'),
+            ('Living Room', 15, 'treble', 'nero_max_12_living_room_zone_15_treble'),
         ],
     )
     def test_format_stability(
@@ -108,4 +117,4 @@ class TestNumberEntityUniqueIdStability:
         """Verify all audio control types generate valid unique_ids."""
         for control_key in ('bass', 'treble', 'balance'):
             result = generate_number_unique_id('Test', 11, control_key)
-            assert result == f'xantech_test_zone_11_{control_key}'
+            assert result == f'nero_max_12_test_zone_11_{control_key}'

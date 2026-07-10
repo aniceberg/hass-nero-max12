@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, MagicMock
 from homeassistant.core import HomeAssistant
 import pytest
 
-from custom_components.xantech.coordinator import XantechCoordinator
+from custom_components.nero_max_12.coordinator import XantechCoordinator
 
 
 @pytest.fixture

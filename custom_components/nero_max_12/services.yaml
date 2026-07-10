@@ -3,7 +3,7 @@ snapshot:
   description: Save the current state of a zone for later restoration.
   target:
     entity:
-      integration: xantech
+      integration: nero_max_12
       domain: media_player
   fields:
     entity_id:
@@ -12,7 +12,7 @@ snapshot:
       required: true
       selector:
         entity:
-          integration: xantech
+          integration: nero_max_12
           domain: media_player
           multiple: true
 
@@ -21,7 +21,7 @@ restore:
   description: Restore a zone to a previously saved snapshot state.
   target:
     entity:
-      integration: xantech
+      integration: nero_max_12
       domain: media_player
   fields:
     entity_id:
@@ -30,6 +30,6 @@ restore:
       required: true
       selector:
         entity:
-          integration: xantech
+          integration: nero_max_12
           domain: media_player
           multiple: true

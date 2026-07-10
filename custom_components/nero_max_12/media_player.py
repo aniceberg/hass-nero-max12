@@ -16,6 +16,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import (
+    AMP_TYPE_OSD_NERO_MAX12,
     AMP_TYPE_SONANCE6,
     CONF_ZONES,
     DOMAIN,
@@ -117,12 +118,20 @@ class ZoneMediaPlayer(CoordinatorEntity[XantechCoordinator], MediaPlayerEntity):
         )
         self._attr_name = zone_name
 
+        device_name = f'Nero MAX 12 {coordinator.amp_name}'
+        device_manufacturer = 'OSD Audio'
+        device_model = 'Nero MAX 12'
+        if amp_type != AMP_TYPE_OSD_NERO_MAX12:
+            device_name = f'Multi-Zone Audio {coordinator.amp_name}'
+            device_manufacturer = 'Xantech-compatible'
+            device_model = 'Multi-Zone Amplifier'
+
         # device info
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, f'{coordinator.amp_name}')},
-            name=f'Xantech {coordinator.amp_name}',
-            manufacturer='Xantech',
-            model='Multi-Zone Amplifier',
+            name=device_name,
+            manufacturer=device_manufacturer,
+            model=device_model,
         )
 
         self._entry = entry
